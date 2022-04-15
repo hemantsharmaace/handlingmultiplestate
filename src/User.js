@@ -1,29 +1,29 @@
 import React, { useState } from "react";
+import Userprofile from "./Userprofile";
 
 function User() {
   const [state, setState] = useState({
-    name: "",
-    likes: 0,
-    age: ""
+    username: "Hemant",
+    age: "32",
+    likes: 0
   });
-  // example of setting this kind of state
-  const incrementMylikes = (prevState) => {
-    console.log(state.likes);
 
-    //  setState({ likes: state.likes + 1 });
+  const increment = (e) => {
+    setState({ username: "hemantincre", age: "33", likes: state.likes + 1 });
   };
 
-  const decrementMylikes = () => {
-    setState({ likes: 2 });
+  const decrement = (e) => {
+    if (state.likes > 0)
+      setState({ username: "hemantdecre", age: "45", likes: state.likes + 1 });
   };
 
   return (
     <>
-      {/* <Userprofile userdata={state} /> */}
+      <Userprofile userdata={state} />
       <input
         type="button"
         onClick={(e) => {
-          incrementMylikes();
+          increment(e);
         }}
         value="Like"
       />
@@ -31,7 +31,7 @@ function User() {
       <input
         type="button"
         onClick={(e) => {
-          decrementMylikes();
+          decrement();
         }}
         value="DisLike"
       />
